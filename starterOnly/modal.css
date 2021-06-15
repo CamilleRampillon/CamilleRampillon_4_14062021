@@ -52,13 +52,7 @@ img {
   font-family: Roboto, sans-serif;
 }
 
-.topnav a:hover {
-  background-color: #ff0000;
-  color: #ffffff;
-  border-radius: 15px;
-}
-
-.topnav a.active {
+.topnav a:hover, .topnav a.active  {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
@@ -94,16 +88,6 @@ img {
   }
 }
 
-@media screen and (max-width: 540px) {
-  .topnav a {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-}
 
 main {
   font-size: 130%;
@@ -159,7 +143,7 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.bground , .bground2{
   display: none;
   position: fixed;
   z-index: 1;
@@ -171,7 +155,7 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
-.content {
+.content , .content2 {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
@@ -188,6 +172,18 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+}
+
+.done {
+  padding: 50% 0;
+  margin: 15px auto;
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  font-size: 145%;
+}
+
+#closeBtn {
+  margin-bottom: 25px;
 }
 
 label {
@@ -210,22 +206,24 @@ input {
   font-size: 20px;
   height: 48px;
 }
-.formData[data-error]::after {
+/*.formData[data-error]::after {*/
+  .mess{
   content: attr(data-error);
   font-size: 0.4em;
   color: #e54858;
-  display: block;
+  /*display: block;*/
   margin-top: 7px;
   margin-bottom: 7px;
   text-align: right;
   line-height: 0.3;
-  opacity: 0;
+  /*opacity: 0;*/
   transition: 0.3s;
 }
 .formData[data-error-visible="true"]::after {
   opacity: 1;
 }
-.formData[data-error-visible="true"] .text-control {
+/*.formData[data-error-visible="true"] .text-control {*/
+  .mess .text-control{
   border: 2px solid #e54858;
 }
 /* 
@@ -324,7 +322,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.button {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -480,7 +479,37 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+    margin-top: -15px;
+  }
+  .header-logo {
+    width: 60%;
+ }
+ 
+ .header-logo img{
+    width: 100%;
+ }
+ 
+ .hero-content {
+    min-width: 200px;
+ }
+
+ .hero-headline {
+    font-size: 13vw;
+ }
+
+ .hero-text {
+    font-size: 4vw;
+ }
+}
+@media screen and (max-width: 1000px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -517,6 +546,30 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
+  .topnav a {
+    display: none;
+ }
+
+ .topnav a.icon {
+    float: right;
+    display: block;
+ }
+
+  .topnav.responsive {
+    position: relative;
+ }
+
+ .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+ }
+
+ .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+ }
 }
 
 @keyframes modalopen {
