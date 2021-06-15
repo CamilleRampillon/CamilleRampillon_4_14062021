@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -69,7 +69,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -77,7 +79,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -90,16 +94,16 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -111,8 +115,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -296,7 +298,7 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
-.close {
+.close-modal {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -306,8 +308,8 @@ input[data-error]::after {
   cursor: pointer;
   transform: scale(0.7);
 }
-.close:before,
-.close:after {
+.close-modal:before,
+.close-modal:after {
   position: absolute;
   left: 15px;
   content: " ";
@@ -315,10 +317,10 @@ input[data-error]::after {
   width: 3px;
   background-color: #fff;
 }
-.close:before {
+.close-modal:before {
   transform: rotate(45deg);
 }
-.close:after {
+.close-modal:after {
   transform: rotate(-45deg);
 }
 .btn-submit,
@@ -390,7 +392,7 @@ input[data-error]::after {
   z-index: 99;
 }
 
-/* Hide the items when the select box is closed: */
+/* Hide the items when the select box is close-modald: */
 .select-hide {
   display: none;
 }
@@ -526,4 +528,3 @@ footer {
     opacity: 1;
   }
 }
-

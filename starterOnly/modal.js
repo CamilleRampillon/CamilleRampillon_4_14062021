@@ -20,4 +20,12 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+//Close modal event
+let closeModalBtn = document.querySelector(".close-modal");
+console.log(closeModalBtn);
+closeModalBtn.addEventListener('click', closeModal);
 
+// close modal form
+function closeModal() {
+  modalbg.style.display = "none";
+}
