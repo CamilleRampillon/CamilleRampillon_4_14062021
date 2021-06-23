@@ -35,19 +35,23 @@ function closeModal() {
   modalValid.style.display = "none";
 }
 
-const closeValidModal = () => {
+function closeValidModal(){
   modalValid.style.display = "none";
-};
-
-// close valid modal
+}
+// close valid modal (with X)
+let closeXBtn = document.querySelector(".close-modal2");
+closeXBtn.addEventListener("click", closeValidModal);
+// close valid modal (with button)
+let closeBtn = document.querySelector("#closeBtn");
 closeBtn.addEventListener("click", closeValidModal);
+
 
 // validation of form.
 document.querySelector("#submit").addEventListener("click", (event) => {
   event.preventDefault();
 
   /******************** first name validation ********************/
-  let firstName = document.forms["reserve"]["first"];
+  let firstName = document.forms["reserve"]["firstname"];
   //length of firstname
   // trim()  delete spaces at the beginning and the end of a string
   let firstNameLength = firstName.value.trim().length;
@@ -83,7 +87,7 @@ document.querySelector("#submit").addEventListener("click", (event) => {
   }
 
   /******************** last name validation ********************/
-  var lastName = document.forms["reserve"]["last"];
+  var lastName = document.forms["reserve"]["lastname"];
   let lastNameLength = lastName.value.trim().length;
   let lastNameMess = document.getElementById("lastname-mess");
   let lastNameValidationState = false;
@@ -123,7 +127,7 @@ document.querySelector("#submit").addEventListener("click", (event) => {
     email.style.border = "2px red solid";
     email.focus();
     return false;
-  } else if (/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/.test(email.value)) { // test of the email with a regex
+  } else if (/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value) == false) { // test of the email with a regex
     emailMess.style.color = "red";
     emailMess.innerHTML = "<p>Ce champ n'est pas valide.</p>";
     email.style.border = "2px red solid";
@@ -138,18 +142,28 @@ document.querySelector("#submit").addEventListener("click", (event) => {
 
   /******************** birthdate validation ********************/
   var birthdate = document.forms["reserve"]["birthdate"];
-  let birth = birthdate.value;
+  let birth = birthdate.value; // format yyyy-MM-dd
   let birthdateMess = document.getElementById("birthdate-mess");
-  let birthdateVal = document.getElementById("birthdate-mess");
   let birthdateValidationState = false;
+  let today = new Date();
+  // Date.parse()  renvoie le nombre de millisecondes écoulées 
+  // entre cette date et le premier janvier 1970, 00:00:00 UTC
+  let birthTime = Date.parse(birth);
+  let todayTime = Date.parse(today);
   // if birth date is empty
   if (birth == "") {
     birthdateMess.style.color = "red";
-    birthdateMess.innerHTML = "<p>Ce champ est obligatoire</p>";
+    birthdateMess.innerHTML = "<p>Ce champ est obligatoire.</p>";
     birthdate.style.border = "2px red solid";
     birthdate.focus();
     return false;
-  } else {
+  } else if(birthTime > todayTime){
+    birthdateMess.style.color = "red";
+    birthdateMess.innerHTML = "<p>La date est supérieure à la date du jour.</p>";
+    birthdate.style.border = "2px red solid";
+    birthdate.focus();
+    return false;
+  }else {
     birthdateMess.style.color = "green";
     birthdateMess.innerHTML = "<p>Ce champ est valide.</p>";
     birthdate.style.border = "2px green solid";
@@ -187,7 +201,6 @@ document.querySelector("#submit").addEventListener("click", (event) => {
 
   /******************** location validation ********************/
   let locationsMess = document.getElementById("locations-mess");
-  let locationsVal = document.getElementById("locations-mess");
   let locationValidationState = false;
   // number oflocations checked
   var boutons = document.getElementsByName("location");
@@ -204,7 +217,7 @@ document.querySelector("#submit").addEventListener("click", (event) => {
     if (nblocations > 0) {
       locationsMess.style.color = "red";
       locationsMess.innerHTML =
-        "<p>Aucune participation enregistrée dans le champ précédent, donc aucune ville ne doit être cochée.</p>";
+        "<p>Aucune participation dans le champ précédent: aucune ville ne doit être cochée.</p>";
     } else {
       locationsMess.style.color = "green";
       locationsMess.innerHTML = "";

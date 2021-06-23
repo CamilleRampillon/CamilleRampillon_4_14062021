@@ -296,7 +296,7 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
-.close-modal {
+.close-modal, .close-modal2 {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -307,7 +307,9 @@ input[data-error]::after {
   transform: scale(0.7);
 }
 .close-modal:before,
-.close-modal:after {
+.close-modal:after,
+.close-modal2:before,
+.close-modal2:after{
   position: absolute;
   left: 15px;
   content: " ";
@@ -315,10 +317,10 @@ input[data-error]::after {
   width: 3px;
   background-color: #fff;
 }
-.close-modal:before {
+.close-modal:before, .close-modal2:before {
   transform: rotate(45deg);
 }
-.close-modal:after {
+.close-modal:after , .close-modal2:after{
   transform: rotate(-45deg);
 }
 .btn-submit,
