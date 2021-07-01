@@ -91,6 +91,7 @@ document.querySelector("#submit").addEventListener("click", (event) => {
   let lastNameLength = lastName.value.trim().length;
   let lastNameMess = document.getElementById("lastname-mess");
   let lastNameValidationState = false;
+  let exp = /([A-Za-z-]{2,}[A-Za-z])*/;
   // if last name is empty
   if (lastNameLength == 0) {
     lastNameMess.style.color = "red";
@@ -106,7 +107,15 @@ document.querySelector("#submit").addEventListener("click", (event) => {
     lastName.style.border = "2px red solid";
     lastName.focus();
     return false;
-  } else {
+  } else if (/([A-Za-z-]{2,}[A-Za-z])*/.test(lastName.value) == true){
+     // last name is not empty but have less than 2 letters
+     lastNameMess.style.color = "red";
+     lastNameMess.innerHTML =
+       "<p>Ce champ ne doit pas contenir de caractères spéciaux ou des chiffres. </p>";
+     lastName.style.border = "2px red solid";
+     lastName.focus();
+     return false;
+  }else {
     //if lastname is ok
     lastNameMess.style.color = "green";
     lastNameMess.innerHTML = "<p>Ce champ est valide.</p>";
