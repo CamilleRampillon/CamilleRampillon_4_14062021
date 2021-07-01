@@ -57,6 +57,7 @@ document.querySelector("#submit").addEventListener("click", (event) => {
   let firstNameLength = firstName.value.trim().length;
   let firstNameMess = document.getElementById("firstname-mess");
   let firstNameValidationState = false;
+  let exp = /^([a-zA-Z]+[,.]?[ ]?|[a-z]+['-]?)+$/;
   // if first name is empty
   if (firstNameLength == 0) {
     // error message in red
@@ -76,6 +77,14 @@ document.querySelector("#submit").addEventListener("click", (event) => {
     firstName.style.border = "2px red solid";
     firstName.focus();
     return false;
+  } else if (!exp.test(firstName.value) == true){
+    // last name has numbers or special characters
+    firstNameMess.style.color = "red";
+    firstNameMess.innerHTML =
+      "<p>Ce champ ne doit pas contenir de caractères spéciaux ou des chiffres. </p>";
+    firstName.style.border = "2px red solid";
+    firstName.focus();
+    return false;
   } else {
     //if firstname is ok
     // valid message in green
@@ -88,10 +97,10 @@ document.querySelector("#submit").addEventListener("click", (event) => {
 
   /******************** last name validation ********************/
   var lastName = document.forms["reserve"]["lastname"];
-  let lastNameLength = lastName.value.trim().length;
+  let lastNameValue = lastName.value;
+  let lastNameLength = lastNameValue.trim().length;
   let lastNameMess = document.getElementById("lastname-mess");
   let lastNameValidationState = false;
-  let exp = /([A-Za-z-]{2,}[A-Za-z])*/;
   // if last name is empty
   if (lastNameLength == 0) {
     lastNameMess.style.color = "red";
@@ -107,8 +116,8 @@ document.querySelector("#submit").addEventListener("click", (event) => {
     lastName.style.border = "2px red solid";
     lastName.focus();
     return false;
-  } else if (/([A-Za-z-]{2,}[A-Za-z])*/.test(lastName.value) == true){
-     // last name is not empty but have less than 2 letters
+  } else if (!exp.test(lastNameValue) == true){
+     // last name has numbers or special characters
      lastNameMess.style.color = "red";
      lastNameMess.innerHTML =
        "<p>Ce champ ne doit pas contenir de caractères spéciaux ou des chiffres. </p>";
